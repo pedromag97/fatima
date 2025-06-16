@@ -1,0 +1,40 @@
+2025-06-12 09:12:50 - INFO - INFO: O bot foi iniciado.
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 ETH: 0.0006146 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 XRP: 0.9370000 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 ADA: 0.0000003 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 USDC: 1.6036416 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 DOGE: 0.7280000 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 RSR: 0.0246000 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 BETH: 0.0000920 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 SUPER: 544.4170000 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 XEC: 0.4500000 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 PYR: 80.6540089 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 ETHW: 0.0817201 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 BEAMX: 21284.6940000 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 STRK: 0.0009107 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 D: 92.5040049 disponivel
+2025-06-12 09:12:51 - INFO - SALDO: 🔹 S: 0.1054939 disponivel
+2025-06-12 09:12:51 - INFO - INFO:  *** Iteracao = 1 || VALOR BTC = 93432.69 EUR ***
+2025-06-12 09:12:56 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:12:56 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:12:57 - INFO - INFO:  *** Iteracao = 2 || VALOR BTC = 93434.79 EUR ***
+2025-06-12 09:13:02 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:13:02 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:13:03 - INFO - INFO:  *** Iteracao = 3 || VALOR BTC = 93428.82 EUR ***
+2025-06-12 09:13:08 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:13:08 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:13:08 - INFO - INFO:  *** Iteracao = 4 || VALOR BTC = 93435.70 EUR ***
+2025-06-12 09:13:14 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:13:14 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:13:14 - INFO - INFO:  *** Iteracao = 5 || VALOR BTC = 93428.88 EUR ***
+2025-06-12 09:13:19 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:13:19 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:13:20 - INFO - INFO:  *** Iteracao = 6 || VALOR BTC = 93418.32 EUR ***
+2025-06-12 09:13:25 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:13:25 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:13:26 - INFO - INFO:  *** Iteracao = 7 || VALOR BTC = 93432.84 EUR ***
+2025-06-12 09:13:31 - INFO - SALDO: 🔹 BTC: 0.0000780 disponivel
+2025-06-12 09:13:31 - INFO - SALDO: 🔹 EUR: 144.8295770 disponivel
+2025-06-12 09:13:32 - INFO - INFO:  *** Iteracao = 8 || VALOR BTC = 93442.03 EUR ***
