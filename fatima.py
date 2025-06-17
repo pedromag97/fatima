@@ -333,7 +333,7 @@ def registar_trade(preco_entrada, preco_saida):
     saldo_1 = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA), 0))
     saldo_2 = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
     delta_saldo = saldo_2-saldo_entrada
-    delta_total += lucro
+    delta_total += lucro_preco
     delta_saldo_total += delta_saldo
 
     log_event("TRADE", f"--- TRADE #{n_trade} ---")
