@@ -402,7 +402,8 @@ log_event("INFO", f"RSI Níveis: Sobrecompra {RSI_SOBRECOMPRA}, Sobrevenda {RSI_
 client = Client(API_KEY, API_SECRET)
 conexao_binance(client)
 
-
+preco_stop_loss = 0.0
+preco_take_profit = 0.0
 
 while True:
     #exibir_saldo_paper_trading()
@@ -419,8 +420,6 @@ while True:
         preco_atual = float(client.get_symbol_ticker(symbol=PAR)['price'])
         log_event("INFO", f" *** Iteracao = {contador} || VALOR BTC = {preco_atual:.2f} EUR ***")
 
-        preco_stop_loss = 0.0
-        preco_take_profit = 0.0
 
         # Verifica se já existe uma posição aberta - STOP LOSS e TAKE PROFIT
         if posicao_aberta and preco_entrada_global is not None:
