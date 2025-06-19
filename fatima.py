@@ -19,6 +19,9 @@ load_dotenv()
 API_KEY = os.getenv('BINANCE_API_KEY')
 API_SECRET = os.getenv('BINANCE_API_SECRET')
 
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
 # ==============================================================================
 # 2. Parâmetros do Bot
 # ==============================================================================
@@ -123,6 +126,19 @@ def log_event(event_type, message):
     log_message = f"{event_type}: {message}"
     logging.info(log_message)
     print(log_message)  # Opcional: tambem imprime no terminal
+    if (event_type == "ERRO" or event_type == "ERRO_GERAL" or event_type == "ALERTA"):
+        enviar_telegram(f"⚠️ ERRO: {message}")
+
+def enviar_telegram(mensagem):
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+        payload = {
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": mensagem
+        }
+        requests.post(url, data=payload)
+    except Exception as e:
+        print(f"Erro ao enviar mensagem Telegram: {e}")
 
 
 # ==============================================================================
@@ -439,6 +455,7 @@ while True:
                     if ordem_venda:
                         registar_trade(preco_entrada_global, preco_atual) # Registar a venda de SL
                         log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {qtd_moeda_disponivel} {MOEDA} || Valor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}")
+                        enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}")
                         posicao_aberta = False
                         preco_entrada_global = None
                         preco_stop_loss = None
@@ -468,6 +485,7 @@ while True:
                     if ordem_venda:
                         registar_trade(preco_entrada_global, preco_atual) # Registar a venda de TP
                         log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {qtd_moeda_disponivel} {MOEDA} || Valor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}")
+                        enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f}")
                         posicao_aberta = False
                         preco_entrada_global = None
                         preco_stop_loss = None
@@ -488,6 +506,7 @@ while True:
         
         if sinal == "COMPRA":
             log_event("COMPRA", "📈 Sinal de COMPRA! Executando ordem...")
+            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} BTC")
             preco_entrada_global = float(client.get_symbol_ticker(symbol=PAR)['price'])
             saldo_entrada = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
 
@@ -523,6 +542,7 @@ while True:
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_venda)
                     log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {quantidade_a_vender} {MOEDA} || Valor vendido = {(quantidade_a_vender*preco_venda):.2f} {MOEDA_2}")
+                    enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {quantidade_a_vender} BTC")
                     preco_entrada_global = None
                 else:
                     log_event("ERRO", "Ordem de venda falhou. Mantendo a posição 'aberta' ou tratando o erro.")
