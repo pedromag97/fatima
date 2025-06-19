@@ -408,7 +408,8 @@ def exibir_saldo():
 
 
 setup_logger()
-    
+
+enviar_telegram("🤖 Bot de Trading iniciado com sucesso!")
 log_event("INFO", "O bot de trading foi iniciado.")
 log_event("INFO", f"Par de Trading: {PAR}, Quantidade por Trade: {QUANTIDADE} {MOEDA}, Timeframe: {TIMEFRAME}")
 log_event("INFO", f"Estratégia: EMA Rápida ({MEDIA_RAPIDA}), EMA Lenta ({MEDIA_LENTA}), RSI Período ({PERIODO_RSI})")
