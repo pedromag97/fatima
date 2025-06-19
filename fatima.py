@@ -507,11 +507,11 @@ while True:
         
         if sinal == "COMPRA":
             log_event("COMPRA", "📈 Sinal de COMPRA! Executando ordem...")
-            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} BTC")
             preco_entrada_global = float(client.get_symbol_ticker(symbol=PAR)['price'])
             saldo_entrada = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
 
             log_event("INFO", f"Preço de entrada definido: {preco_entrada_global:.2f} {MOEDA_2}")
+            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} BTC")
             ordem_compra = executar_ordem("BUY", QUANTIDADE)
             if ordem_compra:
                     preco_stop_loss = preco_entrada_global * (1 - PERCENTAGEM_STOP_LOSS)
