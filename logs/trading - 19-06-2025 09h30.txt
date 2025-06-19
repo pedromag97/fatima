@@ -1,0 +1,14 @@
+2025-06-19 09:37:41 - INFO - INFO: O bot de trading foi iniciado.
+2025-06-19 09:37:41 - INFO - INFO: Par de Trading: BTCEUR, Quantidade por Trade: 0.0012 BTC, Timeframe: 5m
+2025-06-19 09:37:41 - INFO - INFO: Estratégia: EMA Rápida (9), EMA Lenta (21), RSI Período (14)
+2025-06-19 09:37:41 - INFO - INFO: RSI Níveis: Sobrecompra 70, Sobrevenda 30
+2025-06-19 09:37:42 - INFO - INFO: Conexão com a Binance estabelecida com sucesso.
+2025-06-19 09:37:42 - INFO - ERRO: Falha ao obter informações da conta. Status: 400, Mensagem: Timestamp for this request was 1000ms ahead of the server's time.
+2025-06-19 09:37:43 - INFO - INFO:  *** Iteracao = 1 || VALOR BTC = 91418.18 EUR ***
+2025-06-19 09:37:43 - INFO - SINAL: (1.2) Sinal de COMPRA! Continuação de alta e RSI (54.89) não sobrecomprado.
+2025-06-19 09:37:43 - INFO - COMPRA: \U0001f4c8 Sinal de COMPRA! Executando ordem...
+2025-06-19 09:37:44 - INFO - ERRO_GERAL: Erro da API da Binance no loop principal. Status: 400, Mensagem: Timestamp for this request was 1000ms ahead of the server's time.
+2025-06-19 09:37:54 - INFO - ERRO: Falha ao obter informações da conta. Status: 400, Mensagem: Timestamp for this request was 1000ms ahead of the server's time.
+2025-06-19 09:37:55 - INFO - INFO:  *** Iteracao = 2 || VALOR BTC = 91418.19 EUR ***
+2025-06-19 09:37:55 - INFO - TAKE_PROFIT: \U0001f7e2 TAKE-PROFIT ativado! Preco atual (91418.19) atingiu ou ultrapassou TP (0.00).
+2025-06-19 09:37:55 - INFO - ERRO_GERAL: Erro da API da Binance no loop principal. Status: 400, Mensagem: Timestamp for this request was 1000ms ahead of the server's time.
