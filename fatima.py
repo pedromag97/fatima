@@ -456,7 +456,7 @@ while True:
                     if ordem_venda:
                         registar_trade(preco_entrada_global, preco_atual) # Registar a venda de SL
                         log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {qtd_moeda_disponivel} {MOEDA} || Valor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}")
-                        enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}")
+                        enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\nValor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                         posicao_aberta = False
                         preco_entrada_global = None
                         preco_stop_loss = None
@@ -486,7 +486,7 @@ while True:
                     if ordem_venda:
                         registar_trade(preco_entrada_global, preco_atual) # Registar a venda de TP
                         log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {qtd_moeda_disponivel} {MOEDA} || Valor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}")
-                        enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f}")
+                        enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f}\nValor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                         posicao_aberta = False
                         preco_entrada_global = None
                         preco_stop_loss = None
@@ -511,7 +511,7 @@ while True:
             saldo_entrada = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
 
             log_event("INFO", f"Preço de entrada definido: {preco_entrada_global:.2f} {MOEDA_2}")
-            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} BTC")
+            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} {MOEDA}\nValor gasto = {(QUANTIDADE*preco_entrada_global):.2f} {MOEDA_2}")
             ordem_compra = executar_ordem("BUY", QUANTIDADE)
             if ordem_compra:
                     preco_stop_loss = preco_entrada_global * (1 - PERCENTAGEM_STOP_LOSS)
@@ -544,7 +544,7 @@ while True:
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_venda)
                     log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {quantidade_a_vender} {MOEDA} || Valor vendido = {(quantidade_a_vender*preco_venda):.2f} {MOEDA_2}")
-                    enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {quantidade_a_vender} BTC")
+                    enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {quantidade_a_vender} BTC\nValor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                     preco_entrada_global = None
                 else:
                     log_event("ERRO", "Ordem de venda falhou. Mantendo a posição 'aberta' ou tratando o erro.")
