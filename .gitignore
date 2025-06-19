@@ -1,0 +1,4 @@
+# Ficheiros e diretórios para ignorar no Git
+.env
+/node_modules
+# etc.
