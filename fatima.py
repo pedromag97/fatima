@@ -29,8 +29,8 @@ MOEDA_2 = "EUR"
 PAR = MOEDA + MOEDA_2
 
 # === GESTÃO DE RISCO: STOP-LOSS E TAKE-PROFIT ===
-PERCENTAGEM_STOP_LOSS = 0.002   # 0.2% de perda máxima em relação ao preço de compra
-PERCENTAGEM_TAKE_PROFIT = 0.005 # 0.5% de lucro desejado em relação ao preço de compra
+PERCENTAGEM_STOP_LOSS = 0.02   # 0.2% de perda máxima em relação ao preço de compra
+PERCENTAGEM_TAKE_PROFIT = 0.006 # 0.6% de lucro desejado em relação ao preço de compra
 
 # Variáveis globais para rastrear o estado da posição (já existem, mas vamos usá-las)
 
