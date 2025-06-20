@@ -5,6 +5,10 @@ from importlib import reload
 import fatima
 
 class TestTradingSignals(unittest.TestCase):
+    def load_dotenv(*args, **kwargs):
+        # Mock implementation for testing
+        pass
+    
     def setUp(self):
         # Reload module to reset globals between tests
         reload(fatima)
