@@ -62,7 +62,7 @@ RSI_SOBREVENDA = 30  # Nível de sobrevenda do RSI
 # 3. Opções de Comportamento e Debug
 # ==============================================================================
 
-CONTINUACAO = 1
+CONTINUACAO = 0
 SIMULACAO = 0
 DEBUG_ALL = 0
 DEBUG_EMA = 0
@@ -151,7 +151,8 @@ def conexao_binance(client):
         client.get_server_time()  # Usar para calcular diferença e ajustar timestamps
         log_event("INFO", "Conexão com a Binance estabelecida com sucesso.")
     except BinanceAPIException as e:
-        log_event("ERRO", f"Falha na conexão com a API da Binance. Status: {e.status_code}, Mensagem: {e.message}, Resposta Bruta: {e.response.text}")
+        log_event("ERRO", f"Falha na conexão com a API da Binance. Status: {e.status_code}, Mensagem: {e.message}, \
+                  Resposta Bruta: {e.response.text}")
         sys.exit("Erro fatal: Não foi possível conectar à Binance.")
     except Exception as e:
         log_event("ERRO", f"Ocorreu um erro inesperado ao conectar à Binance: {e}")
@@ -165,8 +166,9 @@ def conexao_binance(client):
 def obter_dados():
     if DEBUG_ALL: log_event("DEBUG", "7.1- Obter dados")
     try:
-        # Aumentar o limite para garantir dados suficientes para o RSI (PERIODO_RSI) e EMAs
-        klines = client.get_klines(symbol=PAR, interval=TIMEFRAME, limit=max(50, PERIODO_RSI + MEDIA_LENTA + 5)) # Adiciona uma margem
+        # Aumentar o limite para garantir dados suficientes para o RSI (PERIODO_RSI) e EMAs 
+        # (Adiciona uma margem de 5 para evitar problemas com dados insuficientes)
+        klines = client.get_klines(symbol=PAR, interval=TIMEFRAME, limit=max(50, PERIODO_RSI + MEDIA_LENTA + 5)) 
         df = pd.DataFrame(klines, columns=['time', 'open', 'high', 'low', 'close', 'volume',
                                            'close_time', 'quote_asset_volume', 'number_of_trades',
                                            'taker_buy_base_asset_volume', 'taker_buy_quote_asset_volume', 'ignore'])
@@ -222,10 +224,13 @@ def calcular_medias_e_rsi(df):
     # ==========================================================
 
     if DEBUG_EMA:
-        log_event("DEBUG_EMA", f"EMA9(Atual) = {df['EMA9'].iloc[-1]:.2f} | EMA21(Atual) = {df['EMA21'].iloc[-1]:.2f} | Diferença = {(df['EMA9'].iloc[-1]-df['EMA21'].iloc[-1]):.2f}")
-        log_event("DEBUG_EMA", f"EMA9(Anterior) = {df['EMA9'].iloc[-2]:.2f} | EMA21(Anterior) = {df['EMA21'].iloc[-2]:.2f} | Diferença = {(df['EMA9'].iloc[-2]-df['EMA21'].iloc[-2]):.2f}")
+        log_event("DEBUG_EMA", f"EMA9(Atual) = {df['EMA9'].iloc[-1]:.2f} | EMA21(Atual) = {df['EMA21'].iloc[-1]:.2f} | \
+                  Diferença = {(df['EMA9'].iloc[-1]-df['EMA21'].iloc[-1]):.2f}")
+        log_event("DEBUG_EMA", f"EMA9(Anterior) = {df['EMA9'].iloc[-2]:.2f} | EMA21(Anterior) = {df['EMA21'].iloc[-2]:.2f} \
+                  | Diferença = {(df['EMA9'].iloc[-2]-df['EMA21'].iloc[-2]):.2f}")
         if len(df) >= 3:
-            log_event("DEBUG_EMA", f"EMA9(2x Anterior) = {df['EMA9'].iloc[-3]:.2f} | EMA21(2x Anterior) = {df['EMA21'].iloc[-3]:.2f} | Diferença = {(df['EMA9'].iloc[-3]-df['EMA21'].iloc[-3]):.2f}")
+            log_event("DEBUG_EMA", f"EMA9(2x Anterior) = {df['EMA9'].iloc[-3]:.2f} | EMA21(2x Anterior) = \
+                      {df['EMA21'].iloc[-3]:.2f} | Diferença = {(df['EMA9'].iloc[-3]-df['EMA21'].iloc[-3]):.2f}")
 
     if DEBUG_RSI:
         if not df['RSI'].empty:
@@ -297,7 +302,8 @@ def verificar_sinal(df):
             if (ema9_anterior_2x > ema21_anterior_2x):
                 if not posicao_aberta:
                     posicao_aberta = True
-                    log_event("SINAL", f"(1.2) Sinal de COMPRA! Continuação de alta e RSI ({rsi_atual:.2f}) não sobrecomprado.")
+                    log_event("SINAL", f"(1.2) Sinal de COMPRA! Continuação de alta e RSI ({rsi_atual:.2f})  \
+                              não sobrecomprado.")
                     return "COMPRA"
 
     # Se CONTINUACAO estiver habilitado e as EMAs continuam em tendência de baixa E RSI não está sobrevendido
@@ -360,7 +366,8 @@ def registar_trade(preco_entrada, preco_saida):
     delta_saldo_total += delta_saldo
 
     log_event("TRADE", f"--- TRADE #{n_trade} ---")
-    log_event("TRADE", f"  Entrada: {preco_entrada:.2f} {MOEDA_2} | Saída: {preco_saida:.2f} {MOEDA_2} | Qtd: {QUANTIDADE} {MOEDA}")
+    log_event("TRADE", f"  Entrada: {preco_entrada:.2f} {MOEDA_2} | Saída: {preco_saida:.2f} {MOEDA_2} | \
+              Qtd: {QUANTIDADE} {MOEDA}")
     log_event("TRADE", f"  Lucro (Preço): {lucro_preco:.2f} {MOEDA_2}")
     log_event("TRADE", f"  Saldo Atual: {MOEDA_2}: {saldo_2:.2f} | {MOEDA}: {saldo_1:.5f}")
     log_event("TRADE", f"  Delta (Saldo Real): {delta_saldo:.2f} {MOEDA_2}")
@@ -443,9 +450,11 @@ while True:
         # Verifica se já existe uma posição aberta - STOP LOSS e TAKE PROFIT
         if posicao_aberta and preco_entrada_global is not None:
             if preco_atual <= preco_stop_loss:
-                log_event("STOP_LOSS", f"🔴 STOP-LOSS sinalizado! Preco atual ({preco_atual:.2f}) atingiu ou ultrapassou SL ({preco_stop_loss:.2f}).")
+                log_event("STOP_LOSS", f"🔴 STOP-LOSS sinalizado! Preco atual ({preco_atual:.2f}) atingiu ou \
+                          ultrapassou SL ({preco_stop_loss:.2f}).")
                 # Lógica para vender tudo
-                #qtd_moeda_disponivel = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA), 0))
+                #qtd_moeda_disponivel = float(next((b['free'] for b in client.get_account()['balances'] if \
+                #  b['asset'] == MOEDA), 0))
                 #quantidade_a_vender = min(QUANTIDADE, qtd_moeda_disponivel)
 
                 # Verifica a quantidade mínima para o par antes de tentar vender
@@ -461,8 +470,10 @@ while True:
                 ordem_venda = executar_ordem("SELL", QUANTIDADE)
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_atual) # Registar a venda de SL
-                    log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}")
-                    enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                    log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || \
+                              Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}")
+                    enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\n \
+                                    Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = 0.20€???")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -470,16 +481,19 @@ while True:
                 else:
                     log_event("ERRO", "Ordem de venda STOP-LOSS falhou.")
                 #else:
-                #    log_event("ALERTA", f"Não há {MOEDA} suficiente para vender via STOP-LOSS. Qtd disponível: {qtd_moeda_disponivel}")
+                #    log_event("ALERTA", f"Não há {MOEDA} suficiente para vender via STOP-LOSS. Qtd disponível: 
+                # {qtd_moeda_disponivel}")
                 #    posicao_aberta = False # Se não tem para vender, assume que a posição não está mais aberta
                 #    preco_entrada_global = None
                 #    preco_stop_loss = None
                 #    preco_take_profit = None
 
             elif preco_atual >= preco_take_profit:
-                log_event("TAKE_PROFIT", f"🟢 TAKE-PROFIT sinalizado! Preco atual ({preco_atual:.2f}) atingiu ou ultrapassou TP ({preco_take_profit:.2f}).")
+                log_event("TAKE_PROFIT", f"🟢 TAKE-PROFIT sinalizado! Preco atual ({preco_atual:.2f}) atingiu ou \
+                          ultrapassou TP ({preco_take_profit:.2f}).")
                 # Lógica para vender tudo 
-                #qtd_moeda_disponivel = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA), 0))
+                #qtd_moeda_disponivel = float(next((b['free'] for b in client.get_account()['balances'] if b['asset']
+                # == MOEDA), 0))
                 #quantidade_a_vender = min(QUANTIDADE, qtd_moeda_disponivel)
 
                 # Verifica a quantidade mínima para o par antes de tentar vender
@@ -495,9 +509,11 @@ while True:
                 ordem_venda = executar_ordem("SELL", QUANTIDADE)
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_atual) # Registar a venda de TP
-                    log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE
-                                                                                                                                                                          *preco_atual):.2f} {MOEDA_2}")
-                    enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f}\nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                    log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || \
+                              Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} \
+                              {MOEDA_2}")
+                    enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f} \
+                                    \nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = 0.20€???")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -505,7 +521,8 @@ while True:
                 else:
                     log_event("ERRO", "Ordem de venda TAKE-PROFIT falhou.")
                 #else:
-                #    log_event("ALERTA", f"Não há {MOEDA} suficiente para vender via TAKE-PROFIT. Qtd disponível: {qtd_moeda_disponivel}")
+                #    log_event("ALERTA", f"Não há {MOEDA} suficiente para vender via TAKE-PROFIT. Qtd disponível: 
+                # {qtd_moeda_disponivel}")
                 #    posicao_aberta = False # Se não tem para vender, assume que a posição não está mais aberta
                 #    preco_entrada_global = None
                 #    preco_stop_loss = None
@@ -522,16 +539,21 @@ while True:
             saldo_entrada = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
 
             log_event("INFO", f"Preço de entrada definido: {preco_entrada_global:.2f} {MOEDA_2}")
-            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} {MOEDA}\nValor gasto = {(QUANTIDADE*preco_entrada_global):.2f} {MOEDA_2}")
+            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} {MOEDA}\n \
+                            Valor gasto = {(QUANTIDADE*preco_entrada_global):.2f} {MOEDA_2}")
             ordem_compra = executar_ordem("BUY", QUANTIDADE)
             if ordem_compra:
                     preco_stop_loss = preco_entrada_global * (1 - PERCENTAGEM_STOP_LOSS)
                     preco_take_profit = preco_entrada_global * (1 + PERCENTAGEM_TAKE_PROFIT)
 
-                    log_event("INFO", f"Configurado STOP-LOSS em {preco_stop_loss:.2f} {MOEDA_2} ({-PERCENTAGEM_STOP_LOSS*100:.2f}%)")
-                    log_event("INFO", f"Configurado TAKE-PROFIT em {preco_take_profit:.2f} {MOEDA_2} ({PERCENTAGEM_TAKE_PROFIT*100:.2f}%)")
+                    log_event("INFO", f"Configurado STOP-LOSS em {preco_stop_loss:.2f} {MOEDA_2} \
+                              ({-PERCENTAGEM_STOP_LOSS*100:.2f}%)")
+                    log_event("INFO", f"Configurado TAKE-PROFIT em {preco_take_profit:.2f} {MOEDA_2} \
+                              ({PERCENTAGEM_TAKE_PROFIT*100:.2f}%)")
 
-                    log_event("COMPRA", f"=> PRECO DE COMPRA = {preco_entrada_global:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor gasto = {(QUANTIDADE*preco_entrada_global):.2f} {MOEDA_2}")
+                    log_event("COMPRA", f"=> PRECO DE COMPRA = {preco_entrada_global:.2f} {MOEDA_2} \
+                              || Quantidade = {QUANTIDADE} {MOEDA} || Valor gasto = {(QUANTIDADE*preco_entrada_global):.2f} \
+                                {MOEDA_2}")
             else:
                 log_event("ERRO", "Ordem de compra falhou. Mantendo a posição 'fechada' ou tratando o erro.")
                 posicao_aberta = False
@@ -541,7 +563,8 @@ while True:
             
             preco_venda = float(client.get_symbol_ticker(symbol=PAR)['price'])
 
-            #qtd_moeda_disponivel = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA), 0))
+            #qtd_moeda_disponivel = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA)
+            # , 0))
             #quantidade_a_vender = min(QUANTIDADE, qtd_moeda_disponivel)
 
             # Verifica a quantidade mínima para o par antes de tentar vender
@@ -554,14 +577,17 @@ while True:
             ordem_venda = executar_ordem("SELL", QUANTIDADE)
             if ordem_venda:
                 registar_trade(preco_entrada_global, preco_venda)
-                log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_venda):.2f} {MOEDA_2}")
-                enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {QUANTIDADE} BTC\nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} \
+                          || Valor vendido = {(QUANTIDADE*preco_venda):.2f} {MOEDA_2}")
+                enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {QUANTIDADE} BTC\nValor vendido = \
+                                {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                 preco_entrada_global = None
             else:
                 log_event("ERRO", "Ordem de venda falhou. Mantendo a posição 'aberta' ou tratando o erro.")
                 posicao_aberta = True
             #else:
-            #    log_event("ALERTA", f"Quantidade de {MOEDA} ({qtd_moeda_disponivel:.5f}) insuficiente para venda. Mínimo para {PAR}: {min_qty}")
+            #    log_event("ALERTA", f"Quantidade de {MOEDA} ({qtd_moeda_disponivel:.5f}) insuficiente para venda. Mínimo
+            #  para {PAR}: {min_qty}")
             #    posicao_aberta = False
             
             preco_entrada_global = None
