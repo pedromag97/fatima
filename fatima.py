@@ -98,12 +98,12 @@ def setup_logger():
     try:
         # Tenta criar o diretório se ele não existir
         #os.makedirs(log_directory, exist_ok=True)
-        #print(f"DEBUG: Diretório de log verificado/criado em: {log_directory}") # Debug temporário
+        #log_event("DEBUG", f"DEBUG: Diretório de log verificado/criado em: {log_directory}") # Debug temporário
 
         # Se o ficheiro já existir, remove-o para criar um novo a cada execucao
         if os.path.exists(log_filename):
             os.remove(log_filename)
-            print(f"DEBUG: Arquivo de log existente removido: {log_filename}") # Debug temporário
+            log_event("DEBUG", f"Arquivo de log existente removido: {log_filename}") # Debug temporário
 
         logging.basicConfig(
             filename=log_filename,
@@ -111,12 +111,12 @@ def setup_logger():
             format='%(asctime)s - %(levelname)s - %(message)s',
             datefmt='%Y-%m-%d %H:%M:%S'
         )
-        print(f"INFO: Arquivo de log '{log_filename}' configurado com sucesso.") # Mensagem de sucesso
+        log_event("INFO", f"Arquivo de log '{log_filename}' configurado com sucesso.") # Mensagem de sucesso
         # É importante não usar log_event() aqui, pois logging.basicConfig só surte efeito depois
         # e log_event() depende dele.
     except Exception as e:
         # Imprime no console se houver um erro na configuração do logger
-        print(f"ERRO CRÍTICO: Falha ao configurar o logger! Erro: {e}")
+        log_event("ERRO", f"ERRO CRÍTICO: Falha ao configurar o logger! Erro: {e}")
         sys.exit("Erro fatal na configuração do log. Encerrando.")
 
 
@@ -138,7 +138,7 @@ def enviar_telegram(mensagem):
         }
         requests.post(url, data=payload)
     except Exception as e:
-        print(f"Erro ao enviar mensagem Telegram: {e}")
+        log_event("ERRO", f"Erro ao enviar mensagem Telegram: {e}")
 
 
 # ==============================================================================
@@ -163,7 +163,7 @@ def conexao_binance(client):
 
 # Funcao para obter dados da BINANCE/Conta
 def obter_dados():
-    if DEBUG_ALL: print("7.1- Obter dados")
+    if DEBUG_ALL: log_event("DEBUG", "7.1- Obter dados")
     try:
         # Aumentar o limite para garantir dados suficientes para o RSI (PERIODO_RSI) e EMAs
         klines = client.get_klines(symbol=PAR, interval=TIMEFRAME, limit=max(50, PERIODO_RSI + MEDIA_LENTA + 5)) # Adiciona uma margem
@@ -319,23 +319,23 @@ def verificar_sinal(df):
 
 # Funcao para executar COMPRA/VENDA de ordens
 def executar_ordem(tipo, quantidade):
-    if DEBUG_ALL: print("4- Executar Ordem")
+    if DEBUG_ALL: log_event("DEBUG", "4- Executar Ordem")
 
     if tipo == "BUY":
         try:
             ordem = client.order_market_buy(symbol=PAR, quantity=quantidade)
         except BinanceAPIException as e:
-            print("STATUS CODE:", e.status_code)
-            print("RESPONSE TEXT:", e.message)
-            print("RAW RESPONSE:", e.response.text)
+            log_event("ERRO", "STATUS CODE:", e.status_code)
+            log_event("ERRO", "RESPONSE TEXT:", e.message)
+            log_event("ERRO", "RAW RESPONSE:", e.response.text)
             exit()
     else:
         try:
             ordem = client.order_market_sell(symbol=PAR, quantity=quantidade)
         except BinanceAPIException as e:
-            print("STATUS CODE:", e.status_code)
-            print("RESPONSE TEXT:", e.message)
-            print("RAW RESPONSE:", e.response.text)
+            log_event("ERRO", "STATUS CODE:", e.status_code)
+            log_event("ERRO", "RESPONSE TEXT:", e.message)
+            log_event("ERRO", "RAW RESPONSE:", e.response.text)
             exit()
     return ordem
 
@@ -387,10 +387,10 @@ def exibir_saldo():
                 log_event("SALDO", f"🔹 {asset['asset']}: {saldo:.7f} disponivel")
             #if asset['asset'] == MOEDA:
             #    if saldo < (QTD_INIT_BTC-MIN_RANGE):
-            #        print(f"SALDO INICIAL: 1 - {saldo}")
+            #        log_event("DEBUG", f"SALDO INICIAL: 1 - {saldo}")
             #        #executar_ordem("BUY", round(float(QTD_INIT_BTC)-saldo, 5))
             #    elif saldo > (QTD_INIT_BTC+MIN_RANGE):
-            #        print(f"SALDO INICIAL: 2 - {saldo}")
+            #        log_event("DEBUG", f"SALDO INICIAL: 2 - {saldo}")
             #       #executar_ordem("SELL", round(saldo-float(QTD_INIT_BTC), 5))
 
         else:
@@ -461,8 +461,8 @@ while True:
                 ordem_venda = executar_ordem("SELL", QUANTIDADE)
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_atual) # Registar a venda de SL
-                    log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {qtd_moeda_disponivel} {MOEDA} || Valor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}")
-                    enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\nValor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                    log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}")
+                    enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -495,8 +495,9 @@ while True:
                 ordem_venda = executar_ordem("SELL", QUANTIDADE)
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_atual) # Registar a venda de TP
-                    log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {qtd_moeda_disponivel} {MOEDA} || Valor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}")
-                    enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f}\nValor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                    log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE
+                                                                                                                                                                          *preco_atual):.2f} {MOEDA_2}")
+                    enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f}\nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -553,8 +554,8 @@ while True:
             ordem_venda = executar_ordem("SELL", QUANTIDADE)
             if ordem_venda:
                 registar_trade(preco_entrada_global, preco_venda)
-                log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {quantidade_a_vender} {MOEDA} || Valor vendido = {(quantidade_a_vender*preco_venda):.2f} {MOEDA_2}")
-                enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {quantidade_a_vender} BTC\nValor vendido = {(qtd_moeda_disponivel*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_venda):.2f} {MOEDA_2}")
+                enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {QUANTIDADE} BTC\nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
                 preco_entrada_global = None
             else:
                 log_event("ERRO", "Ordem de venda falhou. Mantendo a posição 'aberta' ou tratando o erro.")
