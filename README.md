@@ -1,2 +1,2 @@
 # fatima
-fatima is a technical analysis python script that tries to read the PAR value and make analysis using EMA and RSI
+fatima is a technical analysis python script that tries to read the PAR-COIN value and trade using EMA and RSI
