@@ -43,6 +43,7 @@ PERCENTAGEM_TAKE_PROFIT = 0.006 # 0.6% de lucro desejado em relação ao preço 
 #QUANTIDADE = 0.0016 #05.04.2025 - 0.0016 BTC = 133 USD // 122 EUR
 QUANTIDADE = 0.0012 #11.06.2025 - 0.0012 BTC = 130 USD // 113 EUR
 QTD_INIT_BTC = 0.0001
+TAX=0.08
 MIN_RANGE = 0.00005
 TIMEFRAME = "5m"
 
@@ -92,18 +93,15 @@ preco_take_profit = None
 # Funcao para configurar ficheiro de LOGs
 def setup_logger():
     # Define o diretório para os logs na pasta do utilizador
-    #log_directory = os.path.expanduser("~/trading_bot_logs")
-    log_filename = os.path.join("trading.txt")
+    filename = "trading - " + time.strftime("%Y-%m-%d %H-%M-%S") + ".txt"
+    log_directory = os.path.join("logs", filename)  # Define o diretório de logs relativo ao script atual
+    log_filename = os.path.join(log_directory)  # Define o nome do arquivo de log
 
     try:
-        # Tenta criar o diretório se ele não existir
-        #os.makedirs(log_directory, exist_ok=True)
-        #log_event("DEBUG", f"DEBUG: Diretório de log verificado/criado em: {log_directory}") # Debug temporário
-
         # Se o ficheiro já existir, remove-o para criar um novo a cada execucao
         if os.path.exists(log_filename):
             os.remove(log_filename)
-            log_event("DEBUG", f"Arquivo de log existente removido: {log_filename}") # Debug temporário
+            print("DEBUG", f"Arquivo de log existente removido: {log_filename}")
 
         logging.basicConfig(
             filename=log_filename,
@@ -111,9 +109,7 @@ def setup_logger():
             format='%(asctime)s - %(levelname)s - %(message)s',
             datefmt='%Y-%m-%d %H:%M:%S'
         )
-        log_event("INFO", f"Arquivo de log '{log_filename}' configurado com sucesso.") # Mensagem de sucesso
-        # É importante não usar log_event() aqui, pois logging.basicConfig só surte efeito depois
-        # e log_event() depende dele.
+        print("INFO", f"Arquivo de log '{log_filename}' configurado com sucesso.") # Mensagem de sucesso
     except Exception as e:
         # Imprime no console se houver um erro na configuração do logger
         log_event("ERRO", f"ERRO CRÍTICO: Falha ao configurar o logger! Erro: {e}")
@@ -126,7 +122,9 @@ def log_event(event_type, message):
     log_message = f"{event_type}: {message}"
     logging.info(log_message)
     print(log_message)  # Opcional: tambem imprime no terminal
-    if (event_type == "ERRO" or event_type == "ERRO_GERAL" or event_type == "ALERTA"):
+    if (event_type == "ERRO" or event_type == "ERRO_GERAL" or event_type == "ALERTA" or event_type == "COMPRA" \
+        or event_type == "VENDA"):
+        # Envia mensagem de erro ou alerta ou compra/venda para o Telegram
         enviar_telegram(f"⚠️ ERRO: {message}")
 
 def enviar_telegram(mensagem):
@@ -416,8 +414,7 @@ def exibir_saldo():
 
 setup_logger()
 
-enviar_telegram("🤖 Bot de Trading iniciado com sucesso!")
-log_event("INFO", "O bot de trading foi iniciado.")
+log_event("ALERTA", "🤖 O bot de trading foi iniciado.")
 log_event("INFO", f"Par de Trading: {PAR}, Quantidade por Trade: {QUANTIDADE} {MOEDA}, Timeframe: {TIMEFRAME}")
 log_event("INFO", f"Estratégia: EMA Rápida ({MEDIA_RAPIDA}), EMA Lenta ({MEDIA_LENTA}), RSI Período ({PERIODO_RSI})")
 log_event("INFO", f"RSI Níveis: Sobrecompra {RSI_SOBRECOMPRA}, Sobrevenda {RSI_SOBREVENDA}")
@@ -471,9 +468,8 @@ while True:
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_atual) # Registar a venda de SL
                     log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || \
-                              Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}")
-                    enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\n \
-                                    Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas ~= 0.16€(0.01%)")
+                              Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido (- Fee) = \
+                              {(QUANTIDADE*preco_atual - TAX):.2f} {MOEDA_2}")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -510,10 +506,8 @@ while True:
                 if ordem_venda:
                     registar_trade(preco_entrada_global, preco_atual) # Registar a venda de TP
                     log_event("VENDA", f"VENDA por TAKE-PROFIT: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || \
-                              Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} \
-                              {MOEDA_2}")
-                    enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f} \
-                                    \nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = 0.16€ (0.01%)")
+                              Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido (- Fee) = \
+                              {(QUANTIDADE*preco_atual - TAX):.2f} {MOEDA_2}")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -534,13 +528,11 @@ while True:
         sinal = verificar_sinal(df)
         
         if sinal == "COMPRA":
-            log_event("COMPRA", "📈 Sinal de COMPRA! Executando ordem...")
+            log_event("INFO", "📈 Sinal de COMPRA! Executando ordem...")
             preco_entrada_global = float(client.get_symbol_ticker(symbol=PAR)['price'])
             saldo_entrada = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
 
             log_event("INFO", f"Preço de entrada definido: {preco_entrada_global:.2f} {MOEDA_2}")
-            enviar_telegram(f"📈 COMPRA executada\nPreço: {preco_entrada_global:.2f} EUR\nQtd: {QUANTIDADE} {MOEDA}\n \
-                            Valor gasto = {(QUANTIDADE*preco_entrada_global):.2f} {MOEDA_2}")
             ordem_compra = executar_ordem("BUY", QUANTIDADE)
             if ordem_compra:
                     preco_stop_loss = preco_entrada_global * (1 - PERCENTAGEM_STOP_LOSS)
@@ -552,14 +544,14 @@ while True:
                               ({PERCENTAGEM_TAKE_PROFIT*100:.2f}%)")
 
                     log_event("COMPRA", f"=> PRECO DE COMPRA = {preco_entrada_global:.2f} {MOEDA_2} \
-                              || Quantidade = {QUANTIDADE} {MOEDA} || Valor gasto = {(QUANTIDADE*preco_entrada_global):.2f} \
+                              || Quantidade = {QUANTIDADE} {MOEDA} || Valor gasto (+ Fee) = {(QUANTIDADE*preco_entrada_global + TAX):.2f} \
                                 {MOEDA_2}")
             else:
                 log_event("ERRO", "Ordem de compra falhou. Mantendo a posição 'fechada' ou tratando o erro.")
                 posicao_aberta = False
         
         elif sinal == "VENDA": #and preco_entrada_global is not None:
-            log_event("VENDA", "📉 Sinal de VENDA! Executando ordem...")
+            log_event("INFO", "📉 Sinal de VENDA! Executando ordem...")
             
             preco_venda = float(client.get_symbol_ticker(symbol=PAR)['price'])
 
@@ -578,9 +570,7 @@ while True:
             if ordem_venda:
                 registar_trade(preco_entrada_global, preco_venda)
                 log_event("VENDA", f"=> PRECO DE VENDA = {preco_venda:.2f} {MOEDA_2} || Quantidade = {QUANTIDADE} {MOEDA} \
-                          || Valor vendido = {(QUANTIDADE*preco_venda):.2f} {MOEDA_2}")
-                enviar_telegram(f"📉 VENDA executada\nPreço: {preco_venda:.2f} EUR\nQtd: {QUANTIDADE} BTC\nValor vendido = \
-                                {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = ???")
+                          || Valor vendido (- Fee)= {(QUANTIDADE*preco_venda - TAX):.2f} {MOEDA_2}")
                 preco_entrada_global = None
             else:
                 log_event("ERRO", "Ordem de venda falhou. Mantendo a posição 'aberta' ou tratando o erro.")
