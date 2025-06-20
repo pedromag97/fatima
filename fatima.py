@@ -595,7 +595,7 @@ while True:
         time.sleep(5)
     
     except KeyboardInterrupt:
-        log_event("INFO", "Bot interrompido manualmente (Ctrl+C).")
+        log_event("ALERTA", "Bot interrompido manualmente (Ctrl+C).")
         break
     except BinanceAPIException as e:
         log_event("ERRO_GERAL", f"Erro da API da Binance no loop principal. Status: {e.status_code}, Mensagem: {e.message}")
