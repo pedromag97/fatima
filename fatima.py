@@ -473,7 +473,7 @@ while True:
                     log_event("VENDA", f"VENDA por STOP-LOSS: => PRECO DE VENDA = {preco_atual:.2f} {MOEDA_2} || \
                               Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}")
                     enviar_telegram(f"🛑 STOP-LOSS ativado\nPreço: {preco_atual:.2f} EUR\nSL: {preco_stop_loss:.2f}\n \
-                                    Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = 0.20€???")
+                                    Valor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas ~= 0.16€(0.01%)")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
@@ -513,7 +513,7 @@ while True:
                               Quantidade = {QUANTIDADE} {MOEDA} || Valor vendido = {(QUANTIDADE*preco_atual):.2f} \
                               {MOEDA_2}")
                     enviar_telegram(f"🟢 TAKE-PROFIT ativado\nPreço: {preco_atual:.2f} EUR\nTP: {preco_take_profit:.2f} \
-                                    \nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = 0.20€???")
+                                    \nValor vendido = {(QUANTIDADE*preco_atual):.2f} {MOEDA_2}\nTaxas = 0.16€ (0.01%)")
                     posicao_aberta = False
                     preco_entrada_global = None
                     preco_stop_loss = None
