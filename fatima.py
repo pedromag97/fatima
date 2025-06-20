@@ -123,10 +123,14 @@ def log_event(event_type, message):
     log_message = f"{event_type}: {message}"
     logging.info(log_message)
     print(log_message)  # Opcional: tambem imprime no terminal
-    if (event_type == "ERRO" or event_type == "ERRO_GERAL" or event_type == "ALERTA" or event_type == "COMPRA" \
-        or event_type == "VENDA"):
-        # Envia mensagem de erro ou alerta ou compra/venda para o Telegram
+    if (event_type == "ERRO" or event_type == "ERRO_GERAL"):
         enviar_telegram(f"⚠️ ERRO: {message}")
+    elif (event_type == "COMPRA"):
+        enviar_telegram(f"📈 COMPRA: {message}")       
+    elif (event_type == "VENDA"):
+        enviar_telegram(f"📉 VENDA: {message}")
+    elif (event_type == "ALERTA"):
+        enviar_telegram(f"🚨 ALERTA: {message}")
 
 def enviar_telegram(mensagem):
     try:
