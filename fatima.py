@@ -46,6 +46,7 @@ QTD_INIT_BTC = 0.0001
 TAX=0.08
 MIN_RANGE = 0.00005
 TIMEFRAME = "5m"
+MARGEM_PROXIMIDADE_VENDA_EMA = 0.0005 # 0.05% de margem para considerar a EMA9 perto da EMA21 para venda antecipada
 
 # === PARÂMETRO: EMA ===
 MEDIA_RAPIDA = 9
@@ -180,17 +181,13 @@ def obter_dados():
         return pd.DataFrame()
 
 # Funcao para calcular as medias EMA9 e EMA21 e o RSI
+# - Calcula as Médias Móveis Exponenciais (EMA) e o RSI no DataFrame.
+# - Args:
+#        df (pd.DataFrame): DataFrame com os dados de preço de fechamento.
+# - Returns:
+#        pd.DataFrame: DataFrame com as colunas 'EMA9', 'EMA21' e 'RSI' adicionadas.
 def calcular_medias_e_rsi(df): 
-    """
-    Calcula as Médias Móveis Exponenciais (EMA) e o RSI no DataFrame.
 
-    Args:
-        df (pd.DataFrame): DataFrame com os dados de preço de fechamento.
-
-    Returns:
-        pd.DataFrame: DataFrame com as colunas 'EMA9', 'EMA21' e 'RSI' adicionadas.
-    """
-    
     if DEBUG_ALL: log_event("DEBUG", "7.2- Calcular EMAs e RSI.")
     if df.empty:
         log_event("ALERTA", "DataFrame vazio ao calcular médias e RSI. Pulando o cálculo.")
@@ -238,16 +235,13 @@ def calcular_medias_e_rsi(df):
     return df
 
 # Funcao para verificar sinais atraves das EMAs e RSI
+# - Verifica os sinais de compra e venda com base no cruzamento das EMAs e nas condições do RSI.
+# - Args:
+#        df (pd.DataFrame): DataFrame com as colunas 'EMA9', 'EMA21' e 'RSI'.
+# - Returns:
+#        str or None: "COMPRA", "VENDA" ou None se nenhum sinal for detectado.
 def verificar_sinal(df):
-    """
-    Verifica os sinais de compra/venda com base no cruzamento das EMAs e nas condições do RSI.
 
-    Args:
-        df (pd.DataFrame): DataFrame com as colunas 'EMA9', 'EMA21' e 'RSI'.
-
-    Returns:
-        str or None: "COMPRA", "VENDA" ou None se nenhum sinal for detectado.
-    """
     if DEBUG_ALL: log_event("DEBUG", "3- Verificar Sinais com EMA e RSI.")
     global posicao_aberta
 
@@ -275,6 +269,19 @@ def verificar_sinal(df):
             posicao_aberta = True
             log_event("SINAL", f"(1.1) Sinal de COMPRA! EMA cruzou para cima e RSI ({rsi_atual:.2f}) confirmou.")
             return "COMPRA"
+
+    # Sinal de Venda Antecipado (Margem na EMA): EMA9 está muito perto ou ligeiramente abaixo da EMA21
+    # e a EMA9 estava acima da EMA21 no candle anterior (ou seja, está a perder momentum de alta)
+    # E o RSI está a descer de uma zona alta.
+    elif posicao_aberta and \
+         (ema9_atual <= (ema21_atual * (1 + MARGEM_PROXIMIDADE_VENDA_EMA))) and \
+         (ema9_anterior > ema21_anterior) and \
+         (rsi_atual < rsi_anterior) and \
+         (rsi_atual > 50): # RSI acima de 50 ainda indica algum momentum para cair, mas não sobrevendido.
+                           # Ajustar o 50 se necessário.
+        log_event("SINAL", f"(2.0) Sinal de VENDA ANTECIPADA! EMA9 ({ema9_atual:.2f}) perto/abaixo de EMA21 \
+                  ({ema21_atual:.2f}) e RSI ({rsi_atual:.2f}) a cair.")
+        return "VENDA" # Retornar "VENDA" para o loop principal
 
     # === LÓGICA DE VENDA (EMA + RSI) ===
     # Sinal de Venda: EMA9 cruza abaixo da EMA21 E RSI está em sobrecompra e começando a cair
@@ -357,17 +364,17 @@ def registar_trade(preco_entrada, preco_saida):
     lucro_preco = (preco_saida - preco_entrada) * QUANTIDADE
     n_trade += 1
     
-    saldo_1 = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA), 0))
-    saldo_2 = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
-    delta_saldo = saldo_2-saldo_entrada
-    delta_total += lucro_preco
+    saldo_moeda_1 = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA), 0))
+    saldo_moeda_2 = float(next((b['free'] for b in client.get_account()['balances'] if b['asset'] == MOEDA_2), 0))
+    delta_saldo = saldo_moeda_2-saldo_entrada
+    delta_total += (lucro_preco-TAX)
     delta_saldo_total += delta_saldo
 
     log_event("TRADE", f"--- TRADE #{n_trade} ---")
     log_event("TRADE", f"  Entrada: {preco_entrada:.2f} {MOEDA_2} | Saída: {preco_saida:.2f} {MOEDA_2} | \
               Qtd: {QUANTIDADE} {MOEDA}")
     log_event("TRADE", f"  Lucro (Preço): {lucro_preco:.2f} {MOEDA_2}")
-    log_event("TRADE", f"  Saldo Atual: {MOEDA_2}: {saldo_2:.2f} | {MOEDA}: {saldo_1:.5f}")
+    log_event("TRADE", f"  Saldo Atual: {MOEDA_2}: {saldo_moeda_2:.2f} | {MOEDA}: {saldo_moeda_1:.5f}")
     log_event("TRADE", f"  Delta (Saldo Real): {delta_saldo:.2f} {MOEDA_2}")
     log_event("TRADE", f"  Total Acumulado (Preço): {delta_total:.2f} {MOEDA_2}")
     log_event("TRADE", f"  Total Acumulado (Saldo Real): {delta_saldo_total:.2f} {MOEDA_2}")
@@ -390,27 +397,16 @@ def exibir_saldo():
         if contador == 0:
             if saldo > 0:
                 log_event("SALDO", f"🔹 {asset['asset']}: {saldo:.7f} disponivel")
-            #if asset['asset'] == MOEDA:
-            #    if saldo < (QTD_INIT_BTC-MIN_RANGE):
-            #        log_event("DEBUG", f"SALDO INICIAL: 1 - {saldo}")
-            #        #executar_ordem("BUY", round(float(QTD_INIT_BTC)-saldo, 5))
-            #    elif saldo > (QTD_INIT_BTC+MIN_RANGE):
-            #        log_event("DEBUG", f"SALDO INICIAL: 2 - {saldo}")
-            #       #executar_ordem("SELL", round(saldo-float(QTD_INIT_BTC), 5))
-
         else:
             if asset['asset'] == MOEDA or asset['asset'] == MOEDA_2:
                 log_event("SALDO", f"🔹 {asset['asset']}: {saldo:.7f} disponivel")
 
 
 ####### LOOP PRINCIPAL #######
-
 # ==============================================================================
 # 10. Loop Principal do Bot
 # ==============================================================================
-
-#if __name__ == "__main__":
-
+# if __name__ == "__main__":
 
 setup_logger()
 
@@ -581,6 +577,12 @@ while True:
             #    posicao_aberta = False
             
             preco_entrada_global = None
+
+        #
+        if (contador % 720 == 0) :
+            log_event("ALERTA", f"📊 Informações do Bot: Iteração {contador} | Trades Realizados: {n_trade} \
+                        | Delta Total (Preço): {delta_total:.2f} {MOEDA_2} | Delta Saldo Total: {delta_saldo_total:.2f} \
+                        {MOEDA_2}")
         
         time.sleep(5)
     
