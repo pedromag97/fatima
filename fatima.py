@@ -94,7 +94,7 @@ preco_take_profit = None
 # Funcao para configurar ficheiro de LOGs
 def setup_logger():
     # Define o diretório para os logs na pasta do utilizador
-    filename_prefix = "trading - " 
+    filename_prefix = "trading" 
     timestamp = time.strftime("%Y-%m-%d %Hh%M")
     log_directory = "logs"  # Define o diretório de logs relativo ao script atual
     log_filename = os.path.join(log_directory, f"{filename_prefix} - {timestamp}.txt")  # Define o nome do arquivo de log
@@ -384,8 +384,7 @@ def registar_trade(preco_entrada, preco_saida):
     delta_saldo_total += delta_saldo
 
     log_event("TRADE", f"--- TRADE #{n_trade} ---")
-    log_event("TRADE", f"  Entrada: {preco_entrada:.2f} {MOEDA_2} | Saída: {preco_saida:.2f} {MOEDA_2} | \
-              Qtd: {QUANTIDADE} {MOEDA}")
+    log_event("TRADE", f"  Entrada: {preco_entrada:.2f} {MOEDA_2} | Saída: {preco_saida:.2f} {MOEDA_2} | Qtd: {QUANTIDADE} {MOEDA}")
     log_event("TRADE", f"  Lucro (Preço): {lucro_preco:.2f} {MOEDA_2}")
     log_event("TRADE", f"  Saldo Atual: {MOEDA_2}: {saldo_moeda_2:.2f} | {MOEDA}: {saldo_moeda_1:.5f}")
     log_event("TRADE", f"  Delta (Saldo Real): {delta_saldo:.2f} {MOEDA_2}")
