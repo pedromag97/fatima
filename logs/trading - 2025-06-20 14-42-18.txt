@@ -1,0 +1,387 @@
+2025-06-20 14:42:18 - INFO - ALERTA: 🤖 O bot de trading foi iniciado.
+2025-06-20 14:42:18 - INFO - INFO: Par de Trading: BTCEUR, Quantidade por Trade: 0.0012 BTC, Timeframe: 5m
+2025-06-20 14:42:18 - INFO - INFO: Estratégia: EMA Rápida (9), EMA Lenta (21), RSI Período (14)
+2025-06-20 14:42:18 - INFO - INFO: RSI Níveis: Sobrecompra 70, Sobrevenda 30
+2025-06-20 14:42:18 - INFO - INFO: Stop Loss Configurado: 0.02% EUR
+2025-06-20 14:42:18 - INFO - INFO: Take Profit Configurado: 0.006% EUR
+2025-06-20 14:42:19 - INFO - INFO: Conexão com a Binance estabelecida com sucesso.
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 ETH: 0.0006146 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 BNB: 0.0210625 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 XRP: 0.9370000 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 ADA: 0.0000003 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 USDC: 0.0815636 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 DOGE: 0.7280000 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 RSR: 0.0246000 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 BETH: 0.0000920 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 SUPER: 544.4170000 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 XEC: 0.4500000 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 PYR: 80.6540089 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 ETHW: 0.0817201 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 BEAMX: 21284.6940000 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 STRK: 0.0009107 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 D: 92.5040049 disponivel
+2025-06-20 14:42:19 - INFO - SALDO: 🔹 S: 0.1054939 disponivel
+2025-06-20 14:42:20 - INFO - INFO:  *** Iteracao = 1 || VALOR BTC = 91992.90 EUR ***
+2025-06-20 14:42:25 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:25 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:26 - INFO - INFO:  *** Iteracao = 2 || VALOR BTC = 91970.86 EUR ***
+2025-06-20 14:42:31 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:31 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:31 - INFO - INFO:  *** Iteracao = 3 || VALOR BTC = 91965.79 EUR ***
+2025-06-20 14:42:37 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:37 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:37 - INFO - INFO:  *** Iteracao = 4 || VALOR BTC = 91965.79 EUR ***
+2025-06-20 14:42:43 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:43 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:43 - INFO - INFO:  *** Iteracao = 5 || VALOR BTC = 91972.42 EUR ***
+2025-06-20 14:42:48 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:48 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:49 - INFO - INFO:  *** Iteracao = 6 || VALOR BTC = 91966.88 EUR ***
+2025-06-20 14:42:54 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:42:54 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:42:55 - INFO - INFO:  *** Iteracao = 7 || VALOR BTC = 91971.22 EUR ***
+2025-06-20 14:43:00 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:00 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:01 - INFO - INFO:  *** Iteracao = 8 || VALOR BTC = 91982.10 EUR ***
+2025-06-20 14:43:06 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:06 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:06 - INFO - INFO:  *** Iteracao = 9 || VALOR BTC = 91950.31 EUR ***
+2025-06-20 14:43:12 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:12 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:12 - INFO - INFO:  *** Iteracao = 10 || VALOR BTC = 91932.88 EUR ***
+2025-06-20 14:43:18 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:18 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:18 - INFO - INFO:  *** Iteracao = 11 || VALOR BTC = 91955.04 EUR ***
+2025-06-20 14:43:23 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:23 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:24 - INFO - INFO:  *** Iteracao = 12 || VALOR BTC = 91965.16 EUR ***
+2025-06-20 14:43:29 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:29 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:30 - INFO - INFO:  *** Iteracao = 13 || VALOR BTC = 91965.16 EUR ***
+2025-06-20 14:43:35 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:35 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:35 - INFO - INFO:  *** Iteracao = 14 || VALOR BTC = 91961.77 EUR ***
+2025-06-20 14:43:41 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:41 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:41 - INFO - INFO:  *** Iteracao = 15 || VALOR BTC = 91961.77 EUR ***
+2025-06-20 14:43:47 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:47 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:47 - INFO - INFO:  *** Iteracao = 16 || VALOR BTC = 91961.77 EUR ***
+2025-06-20 14:43:52 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:52 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:53 - INFO - INFO:  *** Iteracao = 17 || VALOR BTC = 91982.55 EUR ***
+2025-06-20 14:43:58 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:43:58 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:43:59 - INFO - INFO:  *** Iteracao = 18 || VALOR BTC = 92027.59 EUR ***
+2025-06-20 14:44:04 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:04 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:05 - INFO - INFO:  *** Iteracao = 19 || VALOR BTC = 92046.00 EUR ***
+2025-06-20 14:44:10 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:10 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:10 - INFO - INFO:  *** Iteracao = 20 || VALOR BTC = 92055.19 EUR ***
+2025-06-20 14:44:16 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:16 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:16 - INFO - INFO:  *** Iteracao = 21 || VALOR BTC = 92045.89 EUR ***
+2025-06-20 14:44:21 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:21 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:22 - INFO - INFO:  *** Iteracao = 22 || VALOR BTC = 92021.01 EUR ***
+2025-06-20 14:44:27 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:27 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:28 - INFO - INFO:  *** Iteracao = 23 || VALOR BTC = 92012.82 EUR ***
+2025-06-20 14:44:33 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:33 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:34 - INFO - INFO:  *** Iteracao = 24 || VALOR BTC = 91994.42 EUR ***
+2025-06-20 14:44:39 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:39 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:39 - INFO - INFO:  *** Iteracao = 25 || VALOR BTC = 91982.01 EUR ***
+2025-06-20 14:44:45 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:45 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:45 - INFO - INFO:  *** Iteracao = 26 || VALOR BTC = 91996.35 EUR ***
+2025-06-20 14:44:50 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:50 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:51 - INFO - INFO:  *** Iteracao = 27 || VALOR BTC = 91972.38 EUR ***
+2025-06-20 14:44:56 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:44:56 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:44:57 - INFO - INFO:  *** Iteracao = 28 || VALOR BTC = 91963.42 EUR ***
+2025-06-20 14:45:02 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:02 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:03 - INFO - INFO:  *** Iteracao = 29 || VALOR BTC = 91996.35 EUR ***
+2025-06-20 14:45:08 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:08 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:08 - INFO - INFO:  *** Iteracao = 30 || VALOR BTC = 91990.79 EUR ***
+2025-06-20 14:45:14 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:14 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:14 - INFO - INFO:  *** Iteracao = 31 || VALOR BTC = 91978.92 EUR ***
+2025-06-20 14:45:19 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:19 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:20 - INFO - INFO:  *** Iteracao = 32 || VALOR BTC = 91971.63 EUR ***
+2025-06-20 14:45:25 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:25 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:26 - INFO - INFO:  *** Iteracao = 33 || VALOR BTC = 91971.63 EUR ***
+2025-06-20 14:45:31 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:31 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:31 - INFO - INFO:  *** Iteracao = 34 || VALOR BTC = 91982.57 EUR ***
+2025-06-20 14:45:37 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:37 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:37 - INFO - INFO:  *** Iteracao = 35 || VALOR BTC = 91944.80 EUR ***
+2025-06-20 14:45:43 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:43 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:43 - INFO - INFO:  *** Iteracao = 36 || VALOR BTC = 91941.96 EUR ***
+2025-06-20 14:45:48 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:48 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:49 - INFO - INFO:  *** Iteracao = 37 || VALOR BTC = 91944.47 EUR ***
+2025-06-20 14:45:54 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:45:54 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:45:55 - INFO - INFO:  *** Iteracao = 38 || VALOR BTC = 91914.46 EUR ***
+2025-06-20 14:46:00 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:00 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:00 - INFO - INFO:  *** Iteracao = 39 || VALOR BTC = 91876.59 EUR ***
+2025-06-20 14:46:06 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:06 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:06 - INFO - INFO:  *** Iteracao = 40 || VALOR BTC = 91880.38 EUR ***
+2025-06-20 14:46:12 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:12 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:12 - INFO - INFO:  *** Iteracao = 41 || VALOR BTC = 91880.39 EUR ***
+2025-06-20 14:46:17 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:17 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:18 - INFO - INFO:  *** Iteracao = 42 || VALOR BTC = 91880.39 EUR ***
+2025-06-20 14:46:23 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:23 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:24 - INFO - INFO:  *** Iteracao = 43 || VALOR BTC = 91864.30 EUR ***
+2025-06-20 14:46:29 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:29 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:29 - INFO - INFO:  *** Iteracao = 44 || VALOR BTC = 91862.00 EUR ***
+2025-06-20 14:46:35 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:35 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:35 - INFO - INFO:  *** Iteracao = 45 || VALOR BTC = 91878.02 EUR ***
+2025-06-20 14:46:41 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:41 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:41 - INFO - INFO:  *** Iteracao = 46 || VALOR BTC = 91897.28 EUR ***
+2025-06-20 14:46:46 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:46 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:47 - INFO - INFO:  *** Iteracao = 47 || VALOR BTC = 91897.28 EUR ***
+2025-06-20 14:46:52 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:52 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:53 - INFO - INFO:  *** Iteracao = 48 || VALOR BTC = 91882.27 EUR ***
+2025-06-20 14:46:58 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:46:58 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:46:59 - INFO - INFO:  *** Iteracao = 49 || VALOR BTC = 91901.75 EUR ***
+2025-06-20 14:47:04 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:04 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:04 - INFO - INFO:  *** Iteracao = 50 || VALOR BTC = 91901.75 EUR ***
+2025-06-20 14:47:10 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:10 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:10 - INFO - INFO:  *** Iteracao = 51 || VALOR BTC = 91894.96 EUR ***
+2025-06-20 14:47:15 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:15 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:16 - INFO - INFO:  *** Iteracao = 52 || VALOR BTC = 91905.03 EUR ***
+2025-06-20 14:47:21 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:21 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:22 - INFO - INFO:  *** Iteracao = 53 || VALOR BTC = 91886.88 EUR ***
+2025-06-20 14:47:27 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:27 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:28 - INFO - INFO:  *** Iteracao = 54 || VALOR BTC = 91876.03 EUR ***
+2025-06-20 14:47:33 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:33 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:33 - INFO - INFO:  *** Iteracao = 55 || VALOR BTC = 91853.71 EUR ***
+2025-06-20 14:47:39 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:39 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:39 - INFO - INFO:  *** Iteracao = 56 || VALOR BTC = 91853.71 EUR ***
+2025-06-20 14:47:44 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:44 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:45 - INFO - INFO:  *** Iteracao = 57 || VALOR BTC = 91853.71 EUR ***
+2025-06-20 14:47:50 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:50 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:51 - INFO - INFO:  *** Iteracao = 58 || VALOR BTC = 91797.49 EUR ***
+2025-06-20 14:47:56 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:47:56 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:47:57 - INFO - INFO:  *** Iteracao = 59 || VALOR BTC = 91811.49 EUR ***
+2025-06-20 14:48:02 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:02 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:02 - INFO - INFO:  *** Iteracao = 60 || VALOR BTC = 91818.09 EUR ***
+2025-06-20 14:48:08 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:08 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:08 - INFO - INFO:  *** Iteracao = 61 || VALOR BTC = 91810.61 EUR ***
+2025-06-20 14:48:13 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:13 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:14 - INFO - INFO:  *** Iteracao = 62 || VALOR BTC = 91810.61 EUR ***
+2025-06-20 14:48:19 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:19 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:20 - INFO - INFO:  *** Iteracao = 63 || VALOR BTC = 91802.34 EUR ***
+2025-06-20 14:48:25 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:25 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:25 - INFO - INFO:  *** Iteracao = 64 || VALOR BTC = 91801.54 EUR ***
+2025-06-20 14:48:31 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:31 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:31 - INFO - INFO:  *** Iteracao = 65 || VALOR BTC = 91755.00 EUR ***
+2025-06-20 14:48:37 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:37 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:37 - INFO - INFO:  *** Iteracao = 66 || VALOR BTC = 91737.20 EUR ***
+2025-06-20 14:48:42 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:42 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:43 - INFO - INFO:  *** Iteracao = 67 || VALOR BTC = 91704.59 EUR ***
+2025-06-20 14:48:48 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:48 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:49 - INFO - INFO:  *** Iteracao = 68 || VALOR BTC = 91671.48 EUR ***
+2025-06-20 14:48:54 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:48:54 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:48:54 - INFO - INFO:  *** Iteracao = 69 || VALOR BTC = 91669.59 EUR ***
+2025-06-20 14:49:00 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:00 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:00 - INFO - INFO:  *** Iteracao = 70 || VALOR BTC = 91679.42 EUR ***
+2025-06-20 14:49:06 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:06 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:06 - INFO - INFO:  *** Iteracao = 71 || VALOR BTC = 91679.43 EUR ***
+2025-06-20 14:49:11 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:11 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:12 - INFO - INFO:  *** Iteracao = 72 || VALOR BTC = 91688.06 EUR ***
+2025-06-20 14:49:17 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:17 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:18 - INFO - INFO:  *** Iteracao = 73 || VALOR BTC = 91654.48 EUR ***
+2025-06-20 14:49:23 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:23 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:23 - INFO - INFO:  *** Iteracao = 74 || VALOR BTC = 91681.30 EUR ***
+2025-06-20 14:49:29 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:29 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:29 - INFO - INFO:  *** Iteracao = 75 || VALOR BTC = 91664.96 EUR ***
+2025-06-20 14:49:34 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:34 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:35 - INFO - INFO:  *** Iteracao = 76 || VALOR BTC = 91664.96 EUR ***
+2025-06-20 14:49:40 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:40 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:41 - INFO - INFO:  *** Iteracao = 77 || VALOR BTC = 91658.71 EUR ***
+2025-06-20 14:49:46 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:46 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:47 - INFO - INFO:  *** Iteracao = 78 || VALOR BTC = 91664.13 EUR ***
+2025-06-20 14:49:52 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:52 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:52 - INFO - INFO:  *** Iteracao = 79 || VALOR BTC = 91664.13 EUR ***
+2025-06-20 14:49:58 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:49:58 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:49:58 - INFO - INFO:  *** Iteracao = 80 || VALOR BTC = 91675.04 EUR ***
+2025-06-20 14:50:03 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:03 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:04 - INFO - INFO:  *** Iteracao = 81 || VALOR BTC = 91699.74 EUR ***
+2025-06-20 14:50:09 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:09 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:10 - INFO - INFO:  *** Iteracao = 82 || VALOR BTC = 91694.15 EUR ***
+2025-06-20 14:50:15 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:15 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:16 - INFO - INFO:  *** Iteracao = 83 || VALOR BTC = 91700.71 EUR ***
+2025-06-20 14:50:21 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:21 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:21 - INFO - INFO:  *** Iteracao = 84 || VALOR BTC = 91677.88 EUR ***
+2025-06-20 14:50:27 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:27 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:27 - INFO - INFO:  *** Iteracao = 85 || VALOR BTC = 91667.09 EUR ***
+2025-06-20 14:50:32 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:32 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:33 - INFO - INFO:  *** Iteracao = 86 || VALOR BTC = 91667.09 EUR ***
+2025-06-20 14:50:38 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:38 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:39 - INFO - INFO:  *** Iteracao = 87 || VALOR BTC = 91667.09 EUR ***
+2025-06-20 14:50:44 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:44 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:45 - INFO - INFO:  *** Iteracao = 88 || VALOR BTC = 91669.96 EUR ***
+2025-06-20 14:50:50 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:50 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:50 - INFO - INFO:  *** Iteracao = 89 || VALOR BTC = 91680.76 EUR ***
+2025-06-20 14:50:56 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:50:56 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:50:56 - INFO - INFO:  *** Iteracao = 90 || VALOR BTC = 91679.81 EUR ***
+2025-06-20 14:51:01 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:01 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:02 - INFO - INFO:  *** Iteracao = 91 || VALOR BTC = 91679.81 EUR ***
+2025-06-20 14:51:07 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:07 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:08 - INFO - INFO:  *** Iteracao = 92 || VALOR BTC = 91642.85 EUR ***
+2025-06-20 14:51:13 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:13 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:14 - INFO - INFO:  *** Iteracao = 93 || VALOR BTC = 91603.87 EUR ***
+2025-06-20 14:51:19 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:19 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:19 - INFO - INFO:  *** Iteracao = 94 || VALOR BTC = 91528.55 EUR ***
+2025-06-20 14:51:25 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:25 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:25 - INFO - INFO:  *** Iteracao = 95 || VALOR BTC = 91535.77 EUR ***
+2025-06-20 14:51:30 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:30 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:31 - INFO - INFO:  *** Iteracao = 96 || VALOR BTC = 91536.53 EUR ***
+2025-06-20 14:51:36 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:36 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:37 - INFO - INFO:  *** Iteracao = 97 || VALOR BTC = 91570.22 EUR ***
+2025-06-20 14:51:42 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:42 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:42 - INFO - INFO:  *** Iteracao = 98 || VALOR BTC = 91588.80 EUR ***
+2025-06-20 14:51:48 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:48 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:48 - INFO - INFO:  *** Iteracao = 99 || VALOR BTC = 91558.27 EUR ***
+2025-06-20 14:51:54 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:54 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:51:54 - INFO - INFO:  *** Iteracao = 100 || VALOR BTC = 91552.00 EUR ***
+2025-06-20 14:51:59 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:51:59 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:00 - INFO - INFO:  *** Iteracao = 101 || VALOR BTC = 91552.00 EUR ***
+2025-06-20 14:52:05 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:05 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:06 - INFO - INFO:  *** Iteracao = 102 || VALOR BTC = 91615.34 EUR ***
+2025-06-20 14:52:11 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:11 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:11 - INFO - INFO:  *** Iteracao = 103 || VALOR BTC = 91646.18 EUR ***
+2025-06-20 14:52:17 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:17 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:17 - INFO - INFO:  *** Iteracao = 104 || VALOR BTC = 91646.18 EUR ***
+2025-06-20 14:52:23 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:23 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:23 - INFO - INFO:  *** Iteracao = 105 || VALOR BTC = 91611.38 EUR ***
+2025-06-20 14:52:28 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:28 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:29 - INFO - INFO:  *** Iteracao = 106 || VALOR BTC = 91607.41 EUR ***
+2025-06-20 14:52:34 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:34 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:35 - INFO - INFO:  *** Iteracao = 107 || VALOR BTC = 91639.76 EUR ***
+2025-06-20 14:52:40 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:40 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:40 - INFO - INFO:  *** Iteracao = 108 || VALOR BTC = 91638.63 EUR ***
+2025-06-20 14:52:46 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:46 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:46 - INFO - INFO:  *** Iteracao = 109 || VALOR BTC = 91633.24 EUR ***
+2025-06-20 14:52:51 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:51 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:52 - INFO - INFO:  *** Iteracao = 110 || VALOR BTC = 91627.48 EUR ***
+2025-06-20 14:52:57 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:52:57 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:52:58 - INFO - INFO:  *** Iteracao = 111 || VALOR BTC = 91627.48 EUR ***
+2025-06-20 14:53:03 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:03 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:04 - INFO - INFO:  *** Iteracao = 112 || VALOR BTC = 91587.26 EUR ***
+2025-06-20 14:53:09 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:09 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:09 - INFO - INFO:  *** Iteracao = 113 || VALOR BTC = 91587.26 EUR ***
+2025-06-20 14:53:15 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:15 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:15 - INFO - INFO:  *** Iteracao = 114 || VALOR BTC = 91632.06 EUR ***
+2025-06-20 14:53:20 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:20 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:21 - INFO - INFO:  *** Iteracao = 115 || VALOR BTC = 91609.16 EUR ***
+2025-06-20 14:53:26 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:26 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:27 - INFO - INFO:  *** Iteracao = 116 || VALOR BTC = 91587.36 EUR ***
+2025-06-20 14:53:32 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:32 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:33 - INFO - INFO:  *** Iteracao = 117 || VALOR BTC = 91620.21 EUR ***
+2025-06-20 14:53:38 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:38 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:38 - INFO - INFO:  *** Iteracao = 118 || VALOR BTC = 91620.21 EUR ***
+2025-06-20 14:53:44 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:44 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:44 - INFO - INFO:  *** Iteracao = 119 || VALOR BTC = 91644.02 EUR ***
+2025-06-20 14:53:49 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:49 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:50 - INFO - INFO:  *** Iteracao = 120 || VALOR BTC = 91636.92 EUR ***
+2025-06-20 14:53:55 - INFO - SALDO: 🔹 BTC: 0.0000020 disponivel
+2025-06-20 14:53:55 - INFO - SALDO: 🔹 EUR: 130.4640839 disponivel
+2025-06-20 14:53:56 - INFO - INFO:  *** Iteracao = 121 || VALOR BTC = 91636.92 EUR ***
+2025-06-20 14:53:58 - INFO - ALERTA: Bot interrompido manualmente (Ctrl+C).
