@@ -94,16 +94,25 @@ preco_take_profit = None
 # Funcao para configurar ficheiro de LOGs
 def setup_logger():
     # Define o diretório para os logs na pasta do utilizador
-    filename = "trading - " + time.strftime("%Y-%m-%d %H-%M-%S") + ".txt"
-    log_directory = os.path.join("logs", filename)  # Define o diretório de logs relativo ao script atual
-    log_filename = os.path.join(log_directory)  # Define o nome do arquivo de log
+    filename_prefix = "trading - " 
+    timestamp = time.strftime("%Y-%m-%d %Hh%M")
+    log_directory = "logs"  # Define o diretório de logs relativo ao script atual
+    log_filename = os.path.join(log_directory, f"{filename_prefix} - {timestamp}.txt")  # Define o nome do arquivo de log
 
+    # Verifica se o diretório de logs existe, se não existir, tenta criar
+    if not os.path.exists(log_directory):
+        try:
+            os.makedirs(log_directory)
+            print(f"INFO: Diretório de logs '{log_directory}' criado com sucesso.")
+        except OSError as e:
+            print(f"ERRO: Falha ao criar diretório de logs '{log_directory}': {e}. O log pode não ser salvo em arquivo.")
+            # Se não conseguir criar o diretório, pode ser necessário sair ou logar apenas na console.
+            # Por agora, vamos continuar e ver se o basicConfig consegue logar em algum lugar.
+            log_filename = f"{filename_prefix} - {timestamp}.txt" # Tenta gravar na raiz se a pasta falhar
+
+    # Configuração do logger
+    # Tenta configurar o logger para gravar em arquivo
     try:
-        # Se o ficheiro já existir, remove-o para criar um novo a cada execucao
-        if os.path.exists(log_filename):
-            os.remove(log_filename)
-            print("DEBUG", f"Arquivo de log existente removido: {log_filename}")
-
         logging.basicConfig(
             filename=log_filename,
             level=logging.INFO,
